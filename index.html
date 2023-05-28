@@ -51,7 +51,14 @@
         Cette semaine, j'ai principalement concentré mon attention sur le développement de certaines authentifications ainsi que sur la familiarisation avec le flux de travail de Mona. J'ai d'abord compris et organisé la base de données, car il a été mentionné qu'à l'avenir, de nouvelles données seraient ajoutées. Cependant, après avoir consulté les documents pertinents, j'ai appris et compris comment interagir avec la base de données en utilisant Laravel, principalement en créant des migrations (modification de la structure et de la construction de la base de données) et des seeders (ajout de données à la base de données).
 
 Ensuite, j'ai mis en œuvre la fonctionnalité. J'ai principalement concentré mon attention sur la réinitialisation du mot de passe. Tout d'abord, nous avons besoin de certains contrôleurs pour nous aider à effectuer des opérations logiques. Ensuite, j'ai créé des vues différentes pour la connexion et la réinitialisation du mot de passe, ce qui permet aux utilisateurs d'interagir de manière plus efficace. Ensuite, c'est l'ajout de routeurs. J'ai rencontré de nombreux bugs en cours de route, principalement liés à l'adaptation du code existant. Heureusement, les problèmes n'étaient pas très graves. Enfin, après avoir correctement configuré le STMP de l'email, nous pouvons désormais recevoir normalement les emails de réinitialisation du mot de passe.
-    </body>
+        
+        <h1>Semaine 4</h1>
+        
+Cette semaine, je me suis concentré sur un problème de sécurité. Le problème est le suivant : nos images sont stockées dans le dossier public du serveur, ce qui signifie que si quelqu'un connaît l'identifiant de nos images dans ce dossier, il peut entrer l'URL correspondante pour accéder à nos images. C'est désagréable pour les utilisateurs. Cependant, si nous mettons toutes les images dans un dossier privé, nous devrons apporter de nombreuses modifications à notre logique de travail. À chaque endroit où nous utilisons les photos des utilisateurs, nous devons ajouter un mécanisme d'authentification. Après avoir pris en compte la quantité de code sur nos serveurs, j'ai choisi d'abandonner cette méthode. Après des recherches sur Internet, j'ai découvert une méthode très intéressante. Comme nous le savons tous, chaque requête HTTP contient un en-tête HTTP qui contient des informations relatives à la requête HTTP. Par conséquent, nous pouvons modifier le fichier de configuration d'Apache (le serveur web) (.htacess), en ce qui concerne nos requêtes HTTP pour obtenir des images, nous pouvons savoir d'où vient cette requête. Si elle vient de l'intérieur du site, cela signifie qu'elle est utilisée par notre logique de travail interne, et non par un utilisateur anonyme qui parcourt au hasard. Si la requête provient d'un accès direct à l'URL, nous bloquons ce type d'accès.
+
+
+
+</body>
 
 
 </html>
