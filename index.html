@@ -59,6 +59,15 @@ Cette semaine, je me suis concentré sur un problème de sécurité. Le problèm
 
         <h1>Semaine 5</h1>
 Cette semaine, j'ai principalement concentré sur le développement de la nouvelle API, l'API artiste. J'ai rencontré beaucoup de difficultés en cours de route. Par exemple, au début, comme j'avais l'habitude d'utiliser Postgre pour manipuler les bases de données, j'ai découvert qu'il y avait un gros problème de compatibilité avec la migration. Finalement, même si j'ai dû revenir à l'utilisation de MySQL, j'ai quand même fait quelques détours inutiles. Puis j'ai commencé le développement. Pendant le processus de création de la vue, un bug m'a bloqué pendant longtemps. Il s'est avéré que chaque fois que je modifiais un fichier vus.js, il était nécessaire de recompiler immédiatement. Ce point est très important. Par la suite, le développement s'est passé plus en douceur. J'ai commencé par insérer quelques fausses données dans la base de données, puis j'ai développé les routes et les contrôleurs liés à l'artiste. Enfin, notre interface d'administration a réussi à afficher les données liées à l'artiste. Cependant, pour toutes les données qui doivent être affichées par la suite, une discussion est nécessaire, car cela implique des changements dans la base de données.
+
+
+
+        <h1>Semaine 6</h1>
+Cette semaine, j'ai principalement fait deux choses: l'une était de déboguer (debug), et l'autre était d'écrire des fonctionnalités relatives aux quantités (quantity's feature).
+
+En ce qui concerne le débogage, je n'ai pas encore réussi, il y a trop de choses incroyables. La raison de l'erreur est que le système a transféré les images téléchargées dans le dossier temporaire (tmp) au lieu du dossier public (public). Ce qui est étrange, c'est que certaines images peuvent être téléchargées normalement et d'autres non. Selon mon enquête dans la base de données, ce problème a commencé à apparaître vers le mois d'avril. Au début, je soupçonnais que cela était dû à la taille de l'image, mais ce n'était pas le cas, car certaines images plus grandes pouvaient également être téléchargées. J'ai ensuite commencé à soupçonner que c'était un problème avec les utilisateurs, comme certains d'entre eux ne pouvaient pas télécharger quoi que ce soit après un certain temps. Je suis actuellement bloqué à ce stade.
+
+La deuxième chose que j'ai faite était une analyse liée aux quantités. J'ai ajouté des déclencheurs (triggers) à la base de données, de sorte que chaque fois qu'il y a une mise à jour dans une autre base de données, nous pouvons mettre à jour directement les quantités et ensuite les afficher dans l'interface d'administration (admin). Actuellement, il n'y a pas de problème avec les opérations dans la base de données, mais je ne sais pas pourquoi les données ne s'affichent pas soudainement sur l'interface utilisateur. Il pourrait y avoir des problèmes de compatibilité, et je suis encore en train de déboguer.
 </body>
 
 
