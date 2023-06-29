@@ -73,7 +73,8 @@ La deuxième chose que j'ai faite était une analyse liée aux quantités. J'ai 
 Cette semaine, j'ai principalement consacré mon énergie à corriger des bugs. Tout d'abord, j'ai corrigé le bug qui empêchait de télécharger des photos. J'ai rencontré de nombreux obstacles en cours de route, mais heureusement, j'ai finalement réussi à corriger ce bug. Le problème était dû au fait que lorsque notre contrôleur interne voulait accéder à l'attribut photo, nous utilisions une variable de membre commune à l'intérieur d'une classe au lieu de la photo dans la requête (request). Cela nous empêchait d'extraire correctement la photo de la requête. Cependant, après avoir modifié le code, un autre problème est survenu: lorsque les utilisateurs publient une photo, la valeur de "update_at" n'est pas mise à jour. Normalement, chaque fois qu'un utilisateur publie une photo, son "update_at" devrait être mis à jour avec la date et l'heure auxquelles la photo a été publiée. Pour résoudre ce problème, j'ai ajouté un déclencheur (trigger) dans la base de données afin de synchroniser les mises à jour entre les tables "artwor_user" et "user". Cela a très bien résolu le problème
 
 
-
+        <h1>Semaine 8</h1>
+        Cette semaine, j'ai d'abord corrigé le badge, en localisant les fichiers API à l'emplacement correct. Cependant, les fichiers initiaux n'étaient pas dans le format souhaité, ils étaient en format CSV. Donc, j'ai écrit un script Python pour convertir le format des fichiers, et ensuite tout a fonctionné. Après cela, j'ai écrit un petit robot d'indexation pour extraire les informations du site web de la bibliothèque et les organiser dans le format correspondant. La prochaine étape est de savoir où nous utilisons les informations de la bibliothèque, puis de faire les mises à jour correspondantes. Ensuite, j'ai écrit un autre script pour supprimer certaines images liées aux tests. Enfin, j'ai suivi le travail de mon API artiste. C'est à peu près tout.
 </body>
 
 
