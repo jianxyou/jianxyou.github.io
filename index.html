@@ -1,5 +1,6 @@
 
 
+
 <html>
     <head>
         <title>IFT3911 DM3</title>
@@ -79,11 +80,29 @@ Cette semaine, j'ai principalement consacré mon énergie à corriger des bugs. 
         <h1>Semaine 9</h1>
         Cette semaine, j'ai examiné attentivement les fichiers relatifs aux tâches et j'ai résumé mes découvertes dans une interface wiki. Il reste encore beaucoup à améliorer. La semaine prochaine, je prévois de créer davantage de commandes pour aider Mona à mettre à jour la base de données avec des commandes simples. J'ai également aidé Zoe Wang à normaliser les données renvoyées par l'API, afin qu'elles puissent être utilisées de manière appropriée. Enfin, j'ai terminé le développement de la réinitialisation du mot de passe côté client. La semaine prochaine, je vais communiquer avec Zoe Wang pour confirmer que l'API correspond à ce que nous attendions
 
-        <h1>Semaine 9</h1>
+        <h1>Semaine 10</h1>
         Cette semaine, j'ai principalement discuté avec Zoe Wang et nous avons terminé le développement de la réinitialisation du mot de passe. Nous avons également finalisé le développement du document sur les emplois et développé quelques commandes utiles. Ensuite, nous avons travaillé à améliorer le développement de l'API pour les artistes. Cependant, un bug est apparu presque à la fin. Je fais de mon mieux pour le corriger rapidement.
-    </body>
+    
+
+        <h1>Semaine 11</h1>
+        Cette semaine, j'ai perfectionné le développement de l'API de réinitialisation du mot de passe, et j'ai intégré l'API jobs, créant une nouvelle interface wiki pour présenter nos tâches, comment les utiliser, et j'ai défini deux nouvelles commandes. J'ai téléchargé et intégré les nouvelles données de la bibliothèque en ligne, dans le but de les formater comme les données existantes. Cependant, nous n'avons pas trouvé de différences significatives entre les deux, mais l'API last updateplaces a renvoyé 750 différences, ce qui est étrange, donc la tâche principale de la semaine prochaine sera d'enquêter sur ces problèmes.
+        
+
+        <h1>Semaine 12</h1>
+        Cette semaine, j'ai fixé deux bugs sur Mona.
+
+    La première concerne le problème de la photo. J'avais bien corrigé le bug précédemment, mais je n'avais pas compris l'essence du problème. Cette semaine, j'ai passé en revue les tenants et aboutissants et j'ai compris que c'était principalement dû à un problème avec un attribut public dans une classe. Et j'en ai conclu que ces photos ne peuvent plus être récupérées car le mécanisme de récupération de Laravel a automatiquement supprimé ces photos du dossier tmp. C'est logique, car les éléments dans le dossier tmp sont censés être supprimés automatiquement après l'exécution.
+
+    Le deuxième bug est celui dont nous avons parlé la semaine dernière. Nous avons découvert que le problème principal était que lorsque nous mettions à jour les données de place, peu importe à quel point les nouvelles données étaient différentes, nous mettions à jour l'attribut "update at" de toutes les données. Le point critique est que notre API lastupdated renvoie principalement des données basées sur l'attribut "update at". Cela explique pourquoi, alors que nous importions de nouvelles données, nous avons mis à jour l'attribut "update at" de toutes les données.
 
 
+
+        <h1>Semain1 13</h1>
+        Cette semaine, j'ai amélioré l'API de l'artiste, mais un problème est survenu qui a provoqué le crash de toute l'application Mona. Ce problème provient principalement du fait que j'ai modifié la relation entre les tables artiste et œuvre d'art lorsque j'ai commencé à développer l'API de l'artiste il y a quelque temps, et j'ai également réimporté les données, ce qui a conduit à la réécriture du fichier artwork.json, ce qui n'aurait pas dû se produire.
+        De plus, j'ai complété la mise à jour de l'API lastupdateplace, les données retournées par cette API sont désormais beaucoup plus significatives.
+
+De plus, cette semaine, j'ai appris comment apporter des modifications plus rigoureuses au serveur. J'ai compris qu'un petit changement peut causer de grandes pertes. Par conséquent, pour toute modification que j'apporte au serveur, je devrais l'expliquer, la justifier et la signaler soigneusement.
+</body>
 </html>
         
 
