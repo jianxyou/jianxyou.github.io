@@ -1,108 +1,36 @@
-
-
-
-<html>
-    <head>
-        <title>IFT3911 DM3</title>
-        <style type="text/css">
-            table
-            {
-                border: outset 2px black;
-                border-collapse: collapse;
-            }
-            th
-            {
-                border-bottom: double 2px black;
-            }
-            td
-            {
-                border-bottom: solid 1px black;
-            }
-            .first_col
-            {
-                border-right: double 2px black;
-            }
-            body {
-            padding: 10px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1 style="text-align: center;">
-            Mona - rapport - Jianxin You</h1>
-        <h2>Information générale</h2>
-        <p>
-            <span style="font-weight: bold;">Nom: </span>Jianxin You
-            <br />
-            <span style="font-weight: bold;">Matricule: </span>20134401
-            <br />
-            <span style="font-weight: bold;">Courriel: </span> jianxin.you@umontreal.ca
-            <br />
-        </p>
-
-        <h1>Semaine 1 </h1>
-        Cette semaine, j'ai principalement fait les choses suivantes : tout d'abord, Lena nous a fait une introduction, puis je suis rentré pour me familiariser avec la pile technologique du projet, Laravel et PHP, j'ai lu les documents de développement et pratiqué simplement, j'ai essayé de développer une simple application web avec Laravel et PHP, et j'ai appris le processus de développement de l'API.
-
-
-        <h1>Semaine 2 </h1>
-        Cette semaine, j'ai commencé à travailler sur le projet Mona. Tout d'abord, j'ai lu attentivement les documents de l'ancienne élève, Natcha, et j'ai appris beaucoup de démarches initiales. Ensuite, j'ai commencé à déployer mon propre projet Mona localement, le processus a été assez fluide. Puis j'ai expérimenté Mona, j'ai essayé d'appeler chaque API, mais je ne sais pas quel est son service. Ensuite, j'ai commencé à comprendre ce que je devais faire, grâce à mes prédécesseurs, j'ai vite trouvé. La première chose est la tâche liée au tag, car le tag est une nouvelle fonctionnalité. Donc, pour le moment, ma tâche est d'ajouter une fonctionnalité qui permet de trier par tag, et d'ajouter une fonctionnalité qui permet de voir directement le tag dans l'interface de la liste. Donc, pour toutes les branches de Natcha liées à cela, j'ai essayé de lire en détail autant que possible, et j'ai vite trouvé un point de départ. Tout d'abord, j'ai ajouté une fonction de recherche de tag dans le contrôleur d'Artwork ou Place, puis j'ai ajouté un itinéraire à ce service dans le routeur. Ensuite, j'ai ajouté un nouveau modèle de vue pour fournir une interface qui renvoie toutes les entités pertinentes lorsqu'une recherche par tag est effectuée. Ce qu'il me reste à faire, c'est obtenir le nom d'utilisateur et le mot de passe de l'administrateur, ainsi que l'accès au serveur, pour tester le code.
-    
-
-        <h1>Semaine 3 </h1>
-        Cette semaine, j'ai principalement concentré mon attention sur le développement de certaines authentifications ainsi que sur la familiarisation avec le flux de travail de Mona. J'ai d'abord compris et organisé la base de données, car il a été mentionné qu'à l'avenir, de nouvelles données seraient ajoutées. Cependant, après avoir consulté les documents pertinents, j'ai appris et compris comment interagir avec la base de données en utilisant Laravel, principalement en créant des migrations (modification de la structure et de la construction de la base de données) et des seeders (ajout de données à la base de données).
-
-Ensuite, j'ai mis en œuvre la fonctionnalité. J'ai principalement concentré mon attention sur la réinitialisation du mot de passe. Tout d'abord, nous avons besoin de certains contrôleurs pour nous aider à effectuer des opérations logiques. Ensuite, j'ai créé des vues différentes pour la connexion et la réinitialisation du mot de passe, ce qui permet aux utilisateurs d'interagir de manière plus efficace. Ensuite, c'est l'ajout de routeurs. J'ai rencontré de nombreux bugs en cours de route, principalement liés à l'adaptation du code existant. Heureusement, les problèmes n'étaient pas très graves. Enfin, après avoir correctement configuré le STMP de l'email, nous pouvons désormais recevoir normalement les emails de réinitialisation du mot de passe.
-        
-        <h1>Semaine 4</h1>
-        
-Cette semaine, je me suis concentré sur un problème de sécurité. Le problème est le suivant : nos images sont stockées dans le dossier public du serveur, ce qui signifie que si quelqu'un connaît l'identifiant de nos images dans ce dossier, il peut entrer l'URL correspondante pour accéder à nos images. C'est désagréable pour les utilisateurs. Cependant, si nous mettons toutes les images dans un dossier privé, nous devrons apporter de nombreuses modifications à notre logique de travail. À chaque endroit où nous utilisons les photos des utilisateurs, nous devons ajouter un mécanisme d'authentification. Après avoir pris en compte la quantité de code sur nos serveurs, j'ai choisi d'abandonner cette méthode. Après des recherches sur Internet, j'ai découvert une méthode très intéressante. Comme nous le savons tous, chaque requête HTTP contient un en-tête HTTP qui contient des informations relatives à la requête HTTP. Par conséquent, nous pouvons modifier le fichier de configuration d'Apache (le serveur web) (.htacess), en ce qui concerne nos requêtes HTTP pour obtenir des images, nous pouvons savoir d'où vient cette requête. Si elle vient de l'intérieur du site, cela signifie qu'elle est utilisée par notre logique de travail interne, et non par un utilisateur anonyme qui parcourt au hasard. Si la requête provient d'un accès direct à l'URL, nous bloquons ce type d'accès.
-
-
-        <h1>Semaine 5</h1>
-Cette semaine, j'ai principalement concentré sur le développement de la nouvelle API, l'API artiste. J'ai rencontré beaucoup de difficultés en cours de route. Par exemple, au début, comme j'avais l'habitude d'utiliser Postgre pour manipuler les bases de données, j'ai découvert qu'il y avait un gros problème de compatibilité avec la migration. Finalement, même si j'ai dû revenir à l'utilisation de MySQL, j'ai quand même fait quelques détours inutiles. Puis j'ai commencé le développement. Pendant le processus de création de la vue, un bug m'a bloqué pendant longtemps. Il s'est avéré que chaque fois que je modifiais un fichier vus.js, il était nécessaire de recompiler immédiatement. Ce point est très important. Par la suite, le développement s'est passé plus en douceur. J'ai commencé par insérer quelques fausses données dans la base de données, puis j'ai développé les routes et les contrôleurs liés à l'artiste. Enfin, notre interface d'administration a réussi à afficher les données liées à l'artiste. Cependant, pour toutes les données qui doivent être affichées par la suite, une discussion est nécessaire, car cela implique des changements dans la base de données.
-
-
-
-        <h1>Semaine 6</h1>
-Cette semaine, j'ai principalement fait deux choses: l'une était de déboguer (debug), et l'autre était d'écrire des fonctionnalités relatives aux quantités (quantity's feature).
-
-En ce qui concerne le débogage, je n'ai pas encore réussi, il y a trop de choses incroyables. La raison de l'erreur est que le système a transféré les images téléchargées dans le dossier temporaire (tmp) au lieu du dossier public (public). Ce qui est étrange, c'est que certaines images peuvent être téléchargées normalement et d'autres non. Selon mon enquête dans la base de données, ce problème a commencé à apparaître vers le mois d'avril. Au début, je soupçonnais que cela était dû à la taille de l'image, mais ce n'était pas le cas, car certaines images plus grandes pouvaient également être téléchargées. J'ai ensuite commencé à soupçonner que c'était un problème avec les utilisateurs, comme certains d'entre eux ne pouvaient pas télécharger quoi que ce soit après un certain temps. Je suis actuellement bloqué à ce stade.
-
-La deuxième chose que j'ai faite était une analyse liée aux quantités. J'ai ajouté des déclencheurs (triggers) à la base de données, de sorte que chaque fois qu'il y a une mise à jour dans une autre base de données, nous pouvons mettre à jour directement les quantités et ensuite les afficher dans l'interface d'administration (admin). Actuellement, il n'y a pas de problème avec les opérations dans la base de données, mais je ne sais pas pourquoi les données ne s'affichent pas soudainement sur l'interface utilisateur. Il pourrait y avoir des problèmes de compatibilité, et je suis encore en train de déboguer.
-        <h1>Semaine 7</h1>
-        
-Cette semaine, j'ai principalement consacré mon énergie à corriger des bugs. Tout d'abord, j'ai corrigé le bug qui empêchait de télécharger des photos. J'ai rencontré de nombreux obstacles en cours de route, mais heureusement, j'ai finalement réussi à corriger ce bug. Le problème était dû au fait que lorsque notre contrôleur interne voulait accéder à l'attribut photo, nous utilisions une variable de membre commune à l'intérieur d'une classe au lieu de la photo dans la requête (request). Cela nous empêchait d'extraire correctement la photo de la requête. Cependant, après avoir modifié le code, un autre problème est survenu: lorsque les utilisateurs publient une photo, la valeur de "update_at" n'est pas mise à jour. Normalement, chaque fois qu'un utilisateur publie une photo, son "update_at" devrait être mis à jour avec la date et l'heure auxquelles la photo a été publiée. Pour résoudre ce problème, j'ai ajouté un déclencheur (trigger) dans la base de données afin de synchroniser les mises à jour entre les tables "artwor_user" et "user". Cela a très bien résolu le problème
-
-
-        <h1>Semaine 8</h1>
-        Cette semaine, j'ai d'abord corrigé le badge, en localisant les fichiers API à l'emplacement correct. Cependant, les fichiers initiaux n'étaient pas dans le format souhaité, ils étaient en format CSV. Donc, j'ai écrit un script Python pour convertir le format des fichiers, et ensuite tout a fonctionné. Après cela, j'ai écrit un petit robot d'indexation pour extraire les informations du site web de la bibliothèque et les organiser dans le format correspondant. La prochaine étape est de savoir où nous utilisons les informations de la bibliothèque, puis de faire les mises à jour correspondantes. Ensuite, j'ai écrit un autre script pour supprimer certaines images liées aux tests. Enfin, j'ai suivi le travail de mon API artiste. C'est à peu près tout.
-
-        <h1>Semaine 9</h1>
-        Cette semaine, j'ai examiné attentivement les fichiers relatifs aux tâches et j'ai résumé mes découvertes dans une interface wiki. Il reste encore beaucoup à améliorer. La semaine prochaine, je prévois de créer davantage de commandes pour aider Mona à mettre à jour la base de données avec des commandes simples. J'ai également aidé Zoe Wang à normaliser les données renvoyées par l'API, afin qu'elles puissent être utilisées de manière appropriée. Enfin, j'ai terminé le développement de la réinitialisation du mot de passe côté client. La semaine prochaine, je vais communiquer avec Zoe Wang pour confirmer que l'API correspond à ce que nous attendions
-
-        <h1>Semaine 10</h1>
-        Cette semaine, j'ai principalement discuté avec Zoe Wang et nous avons terminé le développement de la réinitialisation du mot de passe. Nous avons également finalisé le développement du document sur les emplois et développé quelques commandes utiles. Ensuite, nous avons travaillé à améliorer le développement de l'API pour les artistes. Cependant, un bug est apparu presque à la fin. Je fais de mon mieux pour le corriger rapidement.
-    
-
-        <h1>Semaine 11</h1>
-        Cette semaine, j'ai perfectionné le développement de l'API de réinitialisation du mot de passe, et j'ai intégré l'API jobs, créant une nouvelle interface wiki pour présenter nos tâches, comment les utiliser, et j'ai défini deux nouvelles commandes. J'ai téléchargé et intégré les nouvelles données de la bibliothèque en ligne, dans le but de les formater comme les données existantes. Cependant, nous n'avons pas trouvé de différences significatives entre les deux, mais l'API last updateplaces a renvoyé 750 différences, ce qui est étrange, donc la tâche principale de la semaine prochaine sera d'enquêter sur ces problèmes.
-        
-
-        <h1>Semaine 12</h1>
-        Cette semaine, j'ai fixé deux bugs sur Mona.
-
-    La première concerne le problème de la photo. J'avais bien corrigé le bug précédemment, mais je n'avais pas compris l'essence du problème. Cette semaine, j'ai passé en revue les tenants et aboutissants et j'ai compris que c'était principalement dû à un problème avec un attribut public dans une classe. Et j'en ai conclu que ces photos ne peuvent plus être récupérées car le mécanisme de récupération de Laravel a automatiquement supprimé ces photos du dossier tmp. C'est logique, car les éléments dans le dossier tmp sont censés être supprimés automatiquement après l'exécution.
-
-    Le deuxième bug est celui dont nous avons parlé la semaine dernière. Nous avons découvert que le problème principal était que lorsque nous mettions à jour les données de place, peu importe à quel point les nouvelles données étaient différentes, nous mettions à jour l'attribut "update at" de toutes les données. Le point critique est que notre API lastupdated renvoie principalement des données basées sur l'attribut "update at". Cela explique pourquoi, alors que nous importions de nouvelles données, nous avons mis à jour l'attribut "update at" de toutes les données.
-
-
-
-        <h1>Semain1 13</h1>
-        Cette semaine, j'ai amélioré l'API de l'artiste, mais un problème est survenu qui a provoqué le crash de toute l'application Mona. Ce problème provient principalement du fait que j'ai modifié la relation entre les tables artiste et œuvre d'art lorsque j'ai commencé à développer l'API de l'artiste il y a quelque temps, et j'ai également réimporté les données, ce qui a conduit à la réécriture du fichier artwork.json, ce qui n'aurait pas dû se produire.
-        De plus, j'ai complété la mise à jour de l'API lastupdateplace, les données retournées par cette API sont désormais beaucoup plus significatives.
-
-De plus, cette semaine, j'ai appris comment apporter des modifications plus rigoureuses au serveur. J'ai compris qu'un petit changement peut causer de grandes pertes. Par conséquent, pour toute modification que j'apporte au serveur, je devrais l'expliquer, la justifier et la signaler soigneusement.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stunning Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="parallax">
+        <div class="layer bg"></div>
+        <div class="layer text" data-speed="0.2">
+            <h1 style="color: black;">Hi, i am Jianxin You</h1>
+        </div>
+        <div class="layer text" data-speed="0.5">
+            <!-- <p>Scroll to discover more...</p> -->
+        </div>
+    </div>
+    <div class="content">
+        <section>
+            <h2>About Me</h2>
+            <a href="./Jianxin_You_En.pdf">Here is my cv</a>
+        </section>
+        <section>
+            <h2>My Work</h2>
+            <a href="https://github.com/jianxyou">Here is my github</a>
+        </section>
+        <section>
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out if you have any questions or if you want to collaborate on a project together!</p>
+            <p>email : jianxin.you@umontreal.ca</p> 
+        </section>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
-        
-
