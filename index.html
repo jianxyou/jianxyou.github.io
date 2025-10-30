@@ -1,36 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stunning Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jianxin You — Portfolio</title>
+<style>
+:root{ --bg:#0b0d12; --text:#e9edf4; --muted:#a2adc2; --panel:#121826; --brand:#7aa2ff; }
+*{box-sizing:border-box} body{margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg)}
+a{color:var(--brand); text-decoration:none} a:hover{text-decoration:underline}
+header{padding:72px 16px; text-align:center; background: radial-gradient(900px 480px at 10% -10%, rgba(121,255,225,.12), transparent 60%), radial-gradient(900px 640px at 110% 10%, rgba(122,162,255,.12), transparent 60%), var(--bg);}
+h1{font-size:clamp(28px,5vw,48px); margin:8px 0 6px}
+.sub{color:var(--muted); max-width:800px; margin:0 auto}
+.links{margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+.btn{display:inline-block; padding:10px 14px; border:1px solid #263248; border-radius:10px; background:#101625}
+main{max-width:900px; margin:0 auto; padding:28px 16px 56px}
+section{padding:18px; background:var(--panel); border:1px solid #1b2438; border-radius:14px; margin-top:16px}
+h2{font-size:20px; margin:0 0 10px}
+p{margin:10px 0}
+ul{margin:8px 0 0 18px}
+.muted{color:var(--muted)}
+footer{color:var(--muted); text-align:center; padding:22px 0 32px}
+/* tiny parallax on the header text */
+[data-parallax]{will-change:transform}
+@media (prefers-color-scheme: light){
+:root{ --bg:#f7f8fb; --text:#0b0d12; --muted:#5b6474; --panel:#ffffff; --brand:#3758ff }
+header{background: radial-gradient(900px 480px at 10% -10%, rgba(55,88,255,.08), transparent 60%), radial-gradient(900px 640px at 110% 10%, rgba(121,255,225,.10), transparent 60%), var(--bg)}
+.btn{background:#fff}
+section{border-color:#e7eaf2}
+}
+</style>
 </head>
 <body>
-    <div class="parallax">
-        <div class="layer bg"></div>
-        <div class="layer text" data-speed="0.2">
-            <h1 style="color: black;">Hi, i am Jianxin You</h1>
-        </div>
-        <div class="layer text" data-speed="0.5">
-            <!-- <p>Scroll to discover more...</p> -->
-        </div>
-    </div>
-    <div class="content">
-        <section>
-            <h2>About Me</h2>
-            <a href="./Jianxin_You_En.pdf">Here is my cv</a>
-        </section>
-        <section>
-            <h2>My Work</h2>
-            <a href="https://github.com/jianxyou">Here is my github</a>
-        </section>
-        <section>
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out if you have any questions or if you want to collaborate on a project together!</p>
-            <p>email : jianxin.you@umontreal.ca</p> 
-        </section>
-    </div>
-    <script src="script.js"></script>
+<header>
+<div data-parallax="0.05">
+<h1>Hi, I’m Jianxin You</h1>
+<p class="sub">Machine Learning · Software development · Optimization</p>
+<div class="links">
+<a class="btn" href="./Jianxin_You_En.pdf">CV</a>
+<a class="btn" href="https://github.com/jianxyou" target="_blank" rel="noopener">GitHub</a>
+</div>
+</div>
+</header>
+
+
+<main>
+<!-- <section id="about">
+<h2>About Me</h2>
+<p>I’m based in Montréal. I build algorithms at the intersection of <strong>non‑convex optimization</strong>, <strong>GNNs</strong>, and <strong>diffusion models</strong>, with applications to biological sequence & structure design.</p>
+</section> -->
+
+
+<section id="pubs">
+<h2>Publications</h2>
+<ul id="pub-list">
+<li>
+<strong>Acceleration of Generalized Optimistic Method with Anchoring</strong> (2025).
+<span class="muted">J. You, et al. — Preprint.</span>
+<!-- Links you can fill when ready -->
+<span> [<a href="./acc.pdf" onclick="return false;">PDF</a>] [<a href="#" onclick="return false;">Code</a>]</span>
+<details><summary>BibTeX</summary>
+<pre>@article{you2025antibodydiffusion,
+title={Antigen-Specific Antibody Design and Optimization with Diffusion-Based Generative Models},
+author={You, Jianxin and Coauthors},
+journal={arXiv preprint arXiv:xxxx.xxxxx},
+year={2025}
+}</pre>
+</details>
+</li>
+</ul>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Email：<a href="mailto:jianxin.you@umontreal.ca">jianxin.you@umontreal.ca</a></p>
+</section>
+</main>
+
+
+<footer>© <span id="y"></span> Jianxin You</footer>
+
+
+<script>
+// year
+document.getElementById('y').textContent = new Date().getFullYear();
+// tiny parallax
+const p = document.querySelector('[data-parallax]');
+if(p && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+window.addEventListener('pointermove', (e)=>{
+const x = (e.clientX / innerWidth - .5) * (parseFloat(p.dataset.parallax)||0);
+const y = (e.clientY / innerHeight - .5) * (parseFloat(p.dataset.parallax)||0);
+p.style.transform = `translate(${x*80}px, ${y*80}px)`;
+});
+}
+</script>
 </body>
 </html>
