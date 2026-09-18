@@ -3,95 +3,199 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jianxin You — Portfolio</title>
+<title>Jianxin You</title>
+<meta name="description" content="Jianxin You — M.Sc. student in Computer Science at Mila (Quebec AI Institute) and Université de Montréal. Research on memory for embodied agents: prospective memory, revocation and forgetting, and evaluating LLM agents from what they do." />
+<meta name="author" content="Jianxin You" />
+<meta property="og:title" content="Jianxin You" />
+<meta property="og:description" content="M.Sc. student at Mila &amp; Université de Montréal. Memory for embodied agents, prospective memory, agent evaluation." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232348c5'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3EJY%3C/text%3E%3C/svg%3E" />
 <style>
-:root{ --bg:#0b0d12; --text:#e9edf4; --muted:#a2adc2; --panel:#121826; --brand:#7aa2ff; }
-*{box-sizing:border-box} body{margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg)}
-a{color:var(--brand); text-decoration:none} a:hover{text-decoration:underline}
-header{padding:72px 16px; text-align:center; background: radial-gradient(900px 480px at 10% -10%, rgba(121,255,225,.12), transparent 60%), radial-gradient(900px 640px at 110% 10%, rgba(122,162,255,.12), transparent 60%), var(--bg);}
-h1{font-size:clamp(28px,5vw,48px); margin:8px 0 6px}
-.sub{color:var(--muted); max-width:800px; margin:0 auto}
-.links{margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-.btn{display:inline-block; padding:10px 14px; border:1px solid #263248; border-radius:10px; background:#101625}
-main{max-width:900px; margin:0 auto; padding:28px 16px 56px}
-section{padding:18px; background:var(--panel); border:1px solid #1b2438; border-radius:14px; margin-top:16px}
-h2{font-size:20px; margin:0 0 10px}
-p{margin:10px 0}
-ul{margin:8px 0 0 18px}
+:root{
+  --bg:#ffffff; --text:#1b2130; --muted:#5c6577; --rule:#e5e8ee; --accent:#2348c5;
+  --tint:#edf1ff; --tint2:#f1f3f6; --card:#fafbfc;
+  --serif:"Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --gutter:168px; --gap:36px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1218; --text:#e6e9f0; --muted:#9aa4b8; --rule:#242b3a; --accent:#8fadff;
+    --tint:#1a2547; --tint2:#1c222e; --card:#141821;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px; margin:0 auto; padding:72px 24px 40px}
+
+/* header */
+header{display:grid; grid-template-columns:var(--gutter) 1fr; column-gap:var(--gap); align-items:center}
+.avatar{position:relative; width:120px; height:120px; border-radius:50%; overflow:hidden; display:grid; place-items:center; background:var(--tint); color:var(--accent); font:400 40px/1 var(--serif); letter-spacing:.03em; box-shadow:0 0 0 1px var(--rule)}
+.avatar img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+h1{font:600 clamp(32px,5vw,44px)/1.1 var(--serif); letter-spacing:-.005em; margin:0 0 10px}
+.role{margin:0; font-size:17px}
+.where{margin:2px 0 0; color:var(--muted)}
+.links{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0; padding:0; list-style:none}
+.links a{display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:500; line-height:1; padding:8px 14px; border:1px solid var(--rule); border-radius:999px; color:var(--text)}
+.links a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+.links svg{width:16px; height:16px}
+
+/* sections: label in the left gutter, content on the right */
+section{display:grid; grid-template-columns:var(--gutter) 1fr; column-gap:var(--gap); margin-top:40px; padding-top:32px; border-top:1px solid var(--rule)}
+header + main > section:first-child{margin-top:48px}
+h2{font-size:12.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:5px 0 16px}
+h3{font-size:14px; font-weight:600; color:var(--muted); margin:26px 0 4px}
+h3:first-child{margin-top:0}
+p{margin:0 0 12px}
+p:last-child{margin-bottom:0}
+.lead{font-size:18px; line-height:1.6}
 .muted{color:var(--muted)}
-footer{color:var(--muted); text-align:center; padding:22px 0 32px}
-/* tiny parallax on the header text */
-[data-parallax]{will-change:transform}
-@media (prefers-color-scheme: light){
-:root{ --bg:#f7f8fb; --text:#0b0d12; --muted:#5b6474; --panel:#ffffff; --brand:#3758ff }
-header{background: radial-gradient(900px 480px at 10% -10%, rgba(55,88,255,.08), transparent 60%), radial-gradient(900px 640px at 110% 10%, rgba(121,255,225,.10), transparent 60%), var(--bg)}
-.btn{background:#fff}
-section{border-color:#e7eaf2}
+
+/* research interests */
+.interests{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px}
+.interests li{padding:18px; border:1px solid var(--rule); border-radius:12px; background:var(--card)}
+.icon{display:grid; place-items:center; width:36px; height:36px; margin-bottom:14px; border-radius:9px; background:var(--tint); color:var(--accent)}
+.icon svg{width:19px; height:19px}
+.interests strong{display:block; font-size:15px; line-height:1.35; margin-bottom:6px}
+.interests span{display:block; color:var(--muted); font-size:14px; line-height:1.55}
+
+/* publications */
+.pubs{list-style:none; margin:0; padding:0}
+.pubs li{display:grid; grid-template-columns:72px 1fr; column-gap:18px; padding:16px 0; border-bottom:1px solid var(--rule)}
+.pubs li:last-child{border-bottom:0; padding-bottom:0}
+.tile{align-self:start; margin-top:2px; padding:10px 4px 9px; border-radius:9px; text-align:center; line-height:1.1; background:var(--tint); color:var(--accent)}
+.tile b{display:block; font-size:13px; letter-spacing:.04em}
+.tile span{display:block; margin-top:4px; font-size:11.5px; opacity:.8}
+.tile.alt{background:var(--tint2); color:var(--muted)}
+.pub-title{font-weight:600; line-height:1.4}
+.pub-title a{color:inherit}
+.pub-title a:hover{color:var(--accent)}
+.pub-authors{font-size:15px; color:var(--muted); margin-top:3px}
+.pub-authors strong{color:var(--text)}
+.pub-venue{font-size:14.5px; color:var(--muted); margin-top:6px}
+.chip{display:inline-block; margin-left:6px; padding:4px 10px; border:1px solid var(--rule); border-radius:999px; font-size:12.5px; font-weight:500; line-height:1}
+.chip:hover{border-color:var(--accent); text-decoration:none}
+
+footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--rule); color:var(--muted); font-size:14px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px 16px}
+
+@media (max-width:820px){
+  .wrap{padding:48px 20px 32px}
+  header, section{grid-template-columns:1fr}
+  .avatar{width:88px; height:88px; font-size:30px; margin-bottom:20px}
+  section{margin-top:32px; padding-top:24px}
+  h2{margin-top:0}
+  .lead{font-size:17px}
+  .pubs li{grid-template-columns:62px 1fr; column-gap:14px}
 }
 </style>
 </head>
 <body>
+<div class="wrap">
+
 <header>
-<div data-parallax="0.05">
-<h1>Hi, I’m Jianxin You</h1>
-<p class="sub">Machine Learning · Software development · Optimization</p>
-<div class="links">
-<a class="btn" href="./Jianxin_You_En.pdf">CV</a>
-<a class="btn" href="https://github.com/jianxyou" target="_blank" rel="noopener">GitHub</a>
-</div>
-</div>
+  <!-- Swap the photo by replacing photo.jpg (square crop). If it is missing, the JY initials show instead. -->
+  <div class="avatar"><span>JY</span><img src="./photo.jpg" alt="Jianxin You" onerror="this.remove()" /></div>
+  <div>
+    <h1>Jianxin You</h1>
+    <p class="role">M.Sc. student in Computer Science</p>
+    <p class="where"><a href="https://mila.quebec/en" target="_blank" rel="noopener">Mila – Quebec AI Institute</a> &amp; Université de Montréal · Montreal, QC, Canada</p>
+    <ul class="links">
+      <li><a href="mailto:jianxin.you@umontreal.ca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email</a></li>
+      <li><a href="./Jianxin_You_En.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>CV</a></li>
+      <li><a href="https://github.com/jianxyou" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a></li>
+      <!-- Add when ready:
+      <li><a href="https://scholar.google.com/citations?user=XXXX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Google Scholar</a></li>
+      <li><a href="https://openreview.net/profile?id=~Jianxin_You1" target="_blank" rel="noopener">OpenReview</a></li>
+      -->
+    </ul>
+  </div>
 </header>
 
-
 <main>
-<!-- <section id="about">
-<h2>About Me</h2>
-<p>I’m based in Montréal. I build algorithms at the intersection of <strong>non‑convex optimization</strong>, <strong>GNNs</strong>, and <strong>diffusion models</strong>, with applications to biological sequence & structure design.</p>
-</section> -->
-
-
-<section id="pubs">
-<h2>Publications</h2>
-<ul id="pub-list">
-<li>
-<strong>Acceleration of Generalized Optimistic Method with Anchoring</strong> (2025).
-<span class="muted">J. You, et al. — Preprint.</span>
-<!-- Links you can fill when ready -->
-<span> [<a href="./acc.pdf">PDF</a>] [<a href="#" onclick="return false;">Code</a>]</span>
-<details><summary>BibTeX</summary>
-<pre>@article{you2025antibodydiffusion,
-title={Antigen-Specific Antibody Design and Optimization with Diffusion-Based Generative Models},
-author={You, Jianxin and Coauthors},
-journal={arXiv preprint arXiv:xxxx.xxxxx},
-year={2025}
-}</pre>
-</details>
-</li>
-</ul>
+<section id="about">
+  <h2>About</h2>
+  <div>
+    <p class="lead">I am an M.Sc. student in Computer Science at Mila and Université de Montréal, supervised by <a href="https://mila.quebec/en/directory/bang-liu" target="_blank" rel="noopener">Prof. Bang Liu</a>. I study <strong>memory for embodied agents</strong>: what an agent should keep from what it sees and is told, how that memory stays valid while the world changes out of view, and when it should and should no longer drive action.</p>
+    <p>Previously, I was a research assistant at Mila with <a href="https://gauthiergidel.github.io/" target="_blank" rel="noopener">Prof. Gauthier Gidel</a>, working on min-max optimization (ICML 2026), and a machine learning research engineer intern at Ericsson, where I built multimodal retrieval-augmented generation systems. Before that, I worked on log parsing with <a href="https://ece.uwaterloo.ca/~wshang/" target="_blank" rel="noopener">Prof. Weiyi Shang</a> at the University of Waterloo (TOSEM) and on PET/MRI data pipelines at McGill University. I received my B.Sc. in Computer Science from Université de Montréal in 2023.</p>
+  </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<p>Email：<a href="mailto:jianxin.you@umontreal.ca">jianxin.you@umontreal.ca</a></p>
+<section id="research">
+  <h2>Research Interests</h2>
+  <ul class="interests">
+    <li>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
+      <strong>Memory for embodied agents</strong>
+      <span>Episodic, semantic and spatial memory built from egocentric experience; keeping memories valid when the world changes unobserved.</span>
+    </li>
+    <li>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></div>
+      <strong>Evaluating agents from world state</strong>
+      <span>Benchmarks with matched twin episodes and deterministic grading of actions rather than answers; reactive decision-making in embodied multimodal LLMs.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+  <div>
+    <h3>Peer-Reviewed</h3>
+    <ul class="pubs">
+      <li>
+        <div class="tile"><b>ICML</b><span>2026</span></div>
+        <div>
+          <div class="pub-title"><a href="https://arxiv.org/abs/2606.21528" target="_blank" rel="noopener">Accelerated and Stable Convergence with Anchored Generalized Optimistic Method</a></div>
+          <div class="pub-authors">Motahareh Sohrabi, <strong>Jianxin You</strong>, Simon Lacoste-Julien, Eduard Gorbunov, Gauthier Gidel</div>
+          <div class="pub-venue">International Conference on Machine Learning <a class="chip" href="https://arxiv.org/abs/2606.21528" target="_blank" rel="noopener">arXiv</a></div>
+        </div>
+      </li>
+      <li>
+        <div class="tile"><b>CIKM</b><span>2026</span></div>
+        <div>
+          <div class="pub-title">Adaptive Merging for Storage-Efficient Multi-Vector Visual Document Retrieval</div>
+          <div class="pub-authors"><strong>Jianxin You</strong>, Kun Ni</div>
+          <div class="pub-venue">ACM International Conference on Information and Knowledge Management</div>
+        </div>
+      </li>
+      <li>
+        <div class="tile"><b>TOSEM</b><span>2026</span></div>
+        <div>
+          <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3787494" target="_blank" rel="noopener">LPB-Gen: Systematic Large Log-Parsing Benchmarks Generation</a></div>
+          <div class="pub-authors">Hetong Dai, Kundi Yao, Felix Li, <strong>Jianxin You</strong>, Qianyun Shen, Weiyi Shang</div>
+          <div class="pub-venue">ACM Transactions on Software Engineering and Methodology <a class="chip" href="https://dl.acm.org/doi/10.1145/3787494" target="_blank" rel="noopener">DOI</a></div>
+        </div>
+      </li>
+    </ul>
+
+    <h3>Preprints</h3>
+    <ul class="pubs">
+      <li>
+        <div class="tile alt"><b>arXiv</b><span>2026</span></div>
+        <div>
+          <div class="pub-title"><a href="https://arxiv.org/abs/2609.10895" target="_blank" rel="noopener">ReactHuman: A Physics-Grounded Benchmark for Human-Like Reactive Decision-Making in Embodied Multimodal LLMs</a></div>
+          <div class="pub-authors">Yizhan Li, <strong>Jianxin You</strong>, Mengyang Xiong, Yinhuan Chen, Zicheng Zhao, Dekun Wu, Dongqing Zhang, Bang Liu</div>
+          <div class="pub-venue">Under review <a class="chip" href="https://arxiv.org/abs/2609.10895" target="_blank" rel="noopener">arXiv</a></div>
+        </div>
+      </li>
+      <li>
+        <div class="tile alt"><b>Preprint</b></div>
+        <div>
+          <div class="pub-title">Learning When to Spawn Subagents for Repository-Level Code Editing</div>
+          <div class="pub-authors">Doseok Jang, <strong>Jianxin You</strong>, Armin Zolfagharidariani</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </section>
 </main>
 
+<footer>
+  <span>© 2026 Jianxin You · <a href="mailto:jianxin.you@umontreal.ca">jianxin.you@umontreal.ca</a></span>
+  <span>Last updated: September 2026</span>
+</footer>
 
-<footer>© <span id="y"></span> Jianxin You</footer>
-
-
-<script>
-// year
-document.getElementById('y').textContent = new Date().getFullYear();
-// tiny parallax
-const p = document.querySelector('[data-parallax]');
-if(p && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-window.addEventListener('pointermove', (e)=>{
-const x = (e.clientX / innerWidth - .5) * (parseFloat(p.dataset.parallax)||0);
-const y = (e.clientY / innerHeight - .5) * (parseFloat(p.dataset.parallax)||0);
-p.style.transform = `translate(${x*80}px, ${y*80}px)`;
-});
-}
-</script>
+</div>
 </body>
 </html>
