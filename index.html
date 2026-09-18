@@ -12,20 +12,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232348c5'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3EJY%3C/text%3E%3C/svg%3E" />
 <style>
 :root{
-  --bg:#ffffff; --text:#1b2130; --muted:#5c6577; --rule:#e5e8ee; --accent:#2348c5;
-  --tint:#edf1ff; --tint2:#f1f3f6; --card:#fafbfc;
+  --bg:#f7f8fb; --text:#1b2130; --muted:#5c6577; --rule:#e3e7ee; --accent:#2348c5;
+  --tint:#e9eeff; --tint2:#eceff4; --card:#ffffff;
+  --glow-a:rgba(35,72,197,.07); --glow-b:rgba(35,72,197,.045);
   --serif:"Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --gutter:168px; --gap:36px;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0f1218; --text:#e6e9f0; --muted:#9aa4b8; --rule:#242b3a; --accent:#8fadff;
-    --tint:#1a2547; --tint2:#1c222e; --card:#141821;
+    --bg:#0d1016; --text:#e6e9f0; --muted:#9aa4b8; --rule:#242b3a; --accent:#8fadff;
+    --tint:#1a2547; --tint2:#1a1f2b; --card:#141924;
+    --glow-a:rgba(143,173,255,.10); --glow-b:rgba(143,173,255,.055);
   }
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif}
+/* soft wash behind the top of the page; fades out before the content ends */
+body::before{content:""; position:fixed; inset:0 0 auto; height:620px; z-index:-1; pointer-events:none;
+  background:radial-gradient(760px 420px at 12% -8%, var(--glow-a), transparent 62%), radial-gradient(680px 400px at 92% -4%, var(--glow-b), transparent 62%)}
 a{color:var(--accent); text-decoration:none}
 a:hover{text-decoration:underline}
 .wrap{max-width:960px; margin:0 auto; padding:72px 24px 40px}
@@ -38,7 +43,7 @@ h1{font:600 clamp(32px,5vw,44px)/1.1 var(--serif); letter-spacing:-.005em; margi
 .role{margin:0; font-size:17px}
 .where{margin:2px 0 0; color:var(--muted)}
 .links{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0; padding:0; list-style:none}
-.links a{display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:500; line-height:1; padding:8px 14px; border:1px solid var(--rule); border-radius:999px; color:var(--text)}
+.links a{display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:500; line-height:1; padding:8px 14px; border:1px solid var(--rule); border-radius:999px; color:var(--text); transition:border-color .15s, color .15s}
 .links a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
 .links svg{width:16px; height:16px}
 
@@ -53,9 +58,11 @@ p:last-child{margin-bottom:0}
 .lead{font-size:18px; line-height:1.6}
 .muted{color:var(--muted)}
 
+
 /* research interests */
-.interests{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px}
-.interests li{padding:18px; border:1px solid var(--rule); border-radius:12px; background:var(--card)}
+.interests{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px}
+.interests li{padding:18px; border:1px solid var(--rule); border-radius:12px; background:var(--card); transition:border-color .15s}
+.interests li:hover{border-color:var(--accent)}
 .icon{display:grid; place-items:center; width:36px; height:36px; margin-bottom:14px; border-radius:9px; background:var(--tint); color:var(--accent)}
 .icon svg{width:19px; height:19px}
 .interests strong{display:block; font-size:15px; line-height:1.35; margin-bottom:6px}
@@ -75,7 +82,7 @@ p:last-child{margin-bottom:0}
 .pub-authors{font-size:15px; color:var(--muted); margin-top:3px}
 .pub-authors strong{color:var(--text)}
 .pub-venue{font-size:14.5px; color:var(--muted); margin-top:6px}
-.chip{display:inline-block; margin-left:6px; padding:4px 10px; border:1px solid var(--rule); border-radius:999px; font-size:12.5px; font-weight:500; line-height:1}
+.chip{display:inline-block; margin-left:6px; padding:4px 10px; border:1px solid var(--rule); border-radius:999px; font-size:12.5px; font-weight:500; line-height:1; transition:border-color .15s}
 .chip:hover{border-color:var(--accent); text-decoration:none}
 
 footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--rule); color:var(--muted); font-size:14px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px 16px}
@@ -118,24 +125,26 @@ footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--rule); colo
   <h2>About</h2>
   <div>
     <p class="lead">I am an M.Sc. student in Computer Science at Mila and Université de Montréal, supervised by <a href="https://mila.quebec/en/directory/bang-liu" target="_blank" rel="noopener">Prof. Bang Liu</a>. I study <strong>memory for embodied agents</strong>: what an agent should keep from what it sees and is told, how that memory stays valid while the world changes out of view, and when it should and should no longer drive action.</p>
-    <p>Previously, I was a research assistant at Mila with <a href="https://gauthiergidel.github.io/" target="_blank" rel="noopener">Prof. Gauthier Gidel</a>, working on min-max optimization (ICML 2026), and a machine learning research engineer intern at Ericsson, where I built multimodal retrieval-augmented generation systems. Before that, I worked on log parsing with <a href="https://ece.uwaterloo.ca/~wshang/" target="_blank" rel="noopener">Prof. Weiyi Shang</a> at the University of Waterloo (TOSEM) and on PET/MRI data pipelines at McGill University. I received my B.Sc. in Computer Science from Université de Montréal in 2023.</p>
   </div>
 </section>
 
 <section id="research">
-  <h2>Research Interests</h2>
-  <ul class="interests">
-    <li>
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
-      <strong>Memory for embodied agents</strong>
-      <span>Episodic, semantic and spatial memory built from egocentric experience; keeping memories valid when the world changes unobserved.</span>
-    </li>
-    <li>
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></div>
-      <strong>Evaluating agents from world state</strong>
-      <span>Benchmarks with matched twin episodes and deterministic grading of actions rather than answers; reactive decision-making in embodied multimodal LLMs.</span>
-    </li>
-  </ul>
+  <h2>Research</h2>
+  <div>
+
+    <ul class="interests">
+      <li>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
+        <strong>Memory for embodied agents</strong>
+        <span>Episodic, semantic and spatial memory built from egocentric experience; keeping memories valid when the world changes unobserved.</span>
+      </li>
+      <li>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></div>
+        <strong>Evaluating agents from world state</strong>
+        <span>Benchmarks with matched twin episodes and deterministic grading of actions rather than answers; reactive decision-making in embodied multimodal LLMs.</span>
+      </li>
+    </ul>
+  </div>
 </section>
 
 <section id="publications">
